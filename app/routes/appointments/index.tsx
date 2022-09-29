@@ -101,7 +101,7 @@ export default function AppointmentIndexRoute() {
           backdropInvert="20%"
           backdropBlur="2px"
         />
-        <ModalContent>
+        <ModalContent bgColor="#2d2e2f" color="#c2beba">
           <ModalHeader>Deletar agendamento</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -109,13 +109,13 @@ export default function AppointmentIndexRoute() {
             <Text fontWeight="600">Essa alteração não poderá ser desfeita</Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={handleDelete} bgColor="tomato">
+            <Button onClick={handleDelete} bgColor="#9a2d19" color="#c2beba">
               Deletar
             </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <Divider borderColor="#433bba" margin="1rem 0" />
+      <Divider borderColor="#343160" margin="1rem 0" />
 
       <Flex alignItems="center" gap={4}>
         <Heading color="#E2E0F5" as="h3" size="sm">
@@ -157,7 +157,7 @@ export default function AppointmentIndexRoute() {
         </InputGroup>
       </Flex>
 
-      <Divider borderColor="#433bba" margin="1rem 0" />
+      <Divider borderColor="#343160" margin="1rem 0" />
 
       {filteredItems.length === 0 && (
         <Flex

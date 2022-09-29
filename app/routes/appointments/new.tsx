@@ -155,7 +155,7 @@ export default function NewAppointmentRoute() {
 
   return (
     <Container p={0} maxW="100%" color="#e2e0f5">
-      <Divider borderColor="#221d5d" margin="1rem 0" />
+      <Divider borderColor="#343160" margin="1rem 0" />
 
       <Breadcrumb fontWeight="medium" fontSize="sm" separator=">">
         <BreadcrumbItem>
@@ -169,7 +169,7 @@ export default function NewAppointmentRoute() {
         </BreadcrumbItem>
       </Breadcrumb>
 
-      <Divider borderColor="#221d5d" margin="1rem 0" />
+      <Divider borderColor="#343160" margin="1rem 0" />
 
       <Heading color="#e2e0f5" as="h3" size="sm">
         Novo agendamento
@@ -244,10 +244,11 @@ export default function NewAppointmentRoute() {
 
         <Button
           _hover={{ color: "#eee", opacity: 0.875 }}
-          bgColor="#433bba"
           w="100%"
           marginTop="4"
           type="submit"
+          bgColor="#2f2c55"
+          color="#b9b6d6"
         >
           Criar
         </Button>

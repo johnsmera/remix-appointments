@@ -12,11 +12,10 @@ export const Card = ({ appointment, handleDelete }: Props) => {
   return (
     <Flex
       flexDirection="row"
-      backgroundColor="#fefefe"
-      color="#333"
+      bgColor="#2d2f30"
+      color="#acb6b0"
       padding={4}
       borderRadius={4}
-      cursor="pointer"
       _hover={{
         opacity: "0.925",
       }}
@@ -47,7 +46,7 @@ export const Card = ({ appointment, handleDelete }: Props) => {
         <DeleteIcon
           onClick={() => handleDelete(appointment)}
           cursor="pointer"
-          color="#333"
+          color="#bab6b0"
         />
       )}
     </Flex>

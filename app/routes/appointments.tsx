@@ -11,17 +11,17 @@ export default function AppointmentsRoute() {
   const goToNewAppointmentPage = () => navigate("/appointments/new");
 
   return (
-    <Flex bgColor="#110f2f" minH="100vh" height="100%">
+    <Flex bgColor="#252338" minH="100vh" height="100%">
       <Container
         maxW="1320px"
-        backgroundColor="#110f2f"
+        bgColor="#1d1d24"
         display="flex"
         alignItems="center"
         justifyContent="center"
       >
-        <Box bg="#060510" w="100%" p={8} paddingTop={6} minH="80vh">
+        <Box bg="#1d1d24" w="100%" p={8} paddingTop={6} minH="80vh">
           <Flex alignItems="center">
-            <Text color="#E2E0F5" fontSize={26}>
+            <Text color="#b9b6d6" fontSize={26}>
               Agendamentos
             </Text>
 
@@ -30,8 +30,8 @@ export default function AppointmentsRoute() {
                 fontSize="16"
                 onClick={goToNewAppointmentPage}
                 marginLeft={4}
-                bgColor="#221d5d"
-                color="#E2E0F5"
+                bgColor="#2f2c55"
+                color="#b9b6d6"
               >
                 <AddIcon fontSize={12} marginRight="2" /> Novo
               </Button>
