@@ -6,7 +6,7 @@ export default function AppointmentsRoute() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isNewPage = !location.pathname.includes("new");
+  const isNewPage = location.pathname.includes("new");
 
   const goToNewAppointmentPage = () => navigate("/appointments/new");
 
@@ -25,7 +25,7 @@ export default function AppointmentsRoute() {
               Agendamentos
             </Text>
 
-            {isNewPage && (
+            {!isNewPage && (
               <Button
                 fontSize="16"
                 onClick={goToNewAppointmentPage}
