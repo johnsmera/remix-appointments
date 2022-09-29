@@ -115,6 +115,18 @@ export default function NewAppointmentRoute() {
     return currentDate.getTime() < selectedDate.getTime();
   };
 
+  const filterPassedDate = (time: any) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+
+    const isSameDate =
+      selectedDate.getDate() === currentDate.getDate() &&
+      selectedDate.getMonth() === currentDate.getMonth() &&
+      selectedDate.getFullYear() === currentDate.getFullYear();
+
+    return selectedDate.getTime() >= currentDate.getTime() || isSameDate;
+  };
+
   const goToRoute = (route: string) => navigate(route);
 
   useEffect(() => {
@@ -211,7 +223,7 @@ export default function NewAppointmentRoute() {
                 );
                 setSelectedDate(date);
               }}
-              filterTime={filterPassedTime}
+              filterDate={filterPassedDate}
               dateFormat={"dd/MM/yyyy"}
               locale={ptBR}
               timeCaption="Horário"
@@ -233,6 +245,7 @@ export default function NewAppointmentRoute() {
                 excludeTimes={excludedTimes}
                 timeIntervals={timeSpacing}
                 timeCaption="Horário"
+                filterTime={filterPassedTime}
                 dateFormat="HH'h'mm"
                 placeholderText="Escolha um horário"
                 onChangeRaw={(e) => e.preventDefault()}
