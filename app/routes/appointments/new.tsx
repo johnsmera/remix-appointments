@@ -12,21 +12,16 @@ import {
   Button,
   Select,
 } from "@chakra-ui/react";
-import {
-  Form,
-  useLoaderData,
-  useNavigate,
-  useActionData,
-} from "@remix-run/react";
+import { Form, useLoaderData, useNavigate } from "@remix-run/react";
 import { addMinutes, parse } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import stylesDatepicker from "react-datepicker/dist/react-datepicker.css";
 import styles from "~/styles/datepicker.css";
-import { dateFormat, getMinDiff } from "~/utils/date";
+import { getMinDiff } from "~/utils/date";
 import { appointmentsService } from "~/services/Appointments.service";
-import { ListDateOutput } from "~/services/IAppointments";
+import type { ListDateOutput } from "~/services/IAppointments";
 
 export const links = () => [
   {
@@ -104,15 +99,23 @@ export default function NewAppointmentRoute() {
 
   const [excludedTimes, setExcludedTimes] = useState<Date[]>([]);
 
+  const selectedDateIsGreaterThanToday = useMemo(() => {
+    if (selectedDate === null) return false;
+
+    const currentDate = new Date();
+
+    return selectedDate.setHours(0, 0, 0, 0) > currentDate.setHours(0, 0, 0, 0);
+  }, [selectedDate]);
+
   const navigate = useNavigate();
 
   const timeSpacing = 15;
 
   const filterPassedTime = (time: any) => {
-    const currentDate = new Date();
-    const selectedDate = new Date(time);
+    const current = new Date();
+    const selected = new Date(time);
 
-    return currentDate.getHours() < selectedDate.getHours();
+    return current.getTime() < selected.getTime();
   };
 
   const filterPassedDate = (time: any) => {
@@ -245,7 +248,9 @@ export default function NewAppointmentRoute() {
                 excludeTimes={excludedTimes}
                 timeIntervals={timeSpacing}
                 timeCaption="Horário"
-                filterTime={filterPassedTime}
+                filterTime={
+                  selectedDateIsGreaterThanToday ? undefined : filterPassedTime
+                }
                 dateFormat="HH'h'mm"
                 placeholderText="Escolha um horário"
                 onChangeRaw={(e) => e.preventDefault()}

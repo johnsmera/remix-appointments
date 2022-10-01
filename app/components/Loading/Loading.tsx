@@ -1,4 +1,4 @@
-import { Progress, Spinner } from "@chakra-ui/react";
+import { Progress } from "@chakra-ui/react";
 
 type Props = {
   loading: boolean;
