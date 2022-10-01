@@ -112,7 +112,7 @@ export default function NewAppointmentRoute() {
     const currentDate = new Date();
     const selectedDate = new Date(time);
 
-    return currentDate.getTime() < selectedDate.getTime();
+    return currentDate.getHours() < selectedDate.getHours();
   };
 
   const filterPassedDate = (time: any) => {
